@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Repo Klonla') {
             steps {
-                git url: 'https://github.com/tahirtolu/jenkins-html-auto.git', branch: 'main'
+                git url: 'https://github.com/tahirtolu/ymg2-vize-sinavi.git', branch: 'main'
             }
         }
 
@@ -35,14 +35,14 @@ pipeline {
         stage('Yeni Container Oluştur') {
             steps {
                 echo "Yeni container oluşturuluyor..."
-                bat "docker run -d --name %CONTAINER_NAME% -p 9090:80 %IMAGE_NAME%"
+                bat "docker run -d --name %CONTAINER_NAME% -p 4444:80 %IMAGE_NAME%"
             }
         }
     }
 
     post {
         success {
-            echo "Yayın başarılı! http://localhost:9090"
+            echo "Yayın başarılı! http://localhost:4444"
         }
         failure {
             echo "Pipeline başarısız oldu!"
